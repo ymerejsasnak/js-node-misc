@@ -8,7 +8,7 @@ function Stack() {
 Stack.prototype.push = function(value) {
     value = value || null;
     this.index++;
-    this.stack[this.index] = value || null;
+    this.stack[this.index] = value;
     return value;
 };
 
