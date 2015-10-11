@@ -15,6 +15,18 @@ List.prototype.prepend = function(data) {
     this.head = node;
 }
 
+List.prototype.append = function(data) {
+    if (this.head === null) {
+        this.head = new Node(data);
+        return;
+    }
+    
+    let node = this.head;
+    while (node.next) {
+        node = node.next;
+    }
+    node.next = new Node(data);
+}
 
 
 List.prototype.toString = function() {
