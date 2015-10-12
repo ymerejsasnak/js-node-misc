@@ -71,11 +71,32 @@ List.prototype.lastIndexOf = function(data) {
         current++;
     }
     return result;
+}
 
+List.prototype.everyIndexOf = function(data) {
+    let current = 0, result = [], node = this.head;
+
+    while (node) {
+        if (node.data === data) result.push(current);
+        node = node.next;
+        current++;
+    }
+    return result;
 }
 
 List.prototype.removeByIndex = function(index) {
+    if (index < 0) throw new Error('out of range');
+    if (index === 0) return this.head = this.head.next;
 
+    let current = 0, currentNode = this.head, previousNode = null;
+
+    while (current < index) {
+        previousNode = currentNode;
+        currentNode = currentNode.next;
+        current++;
+        if (currentNode === null) throw new Error('out of range');
+    }
+    previousNode.next = currentNode.next;
 }
 
 List.prototype.removeFirstByValue = function(data) {
