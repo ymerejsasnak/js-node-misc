@@ -35,10 +35,19 @@ List.prototype.append = function(data) {
 }
 
 List.prototype.insert = function(index, data) {
- 
+
 }
 
 List.prototype.getNth = function(index) {
+    if (index < 0) return undefined;
+    let current = 0, node = this.head;
+
+    while (current !== index) {
+        if (node.next === null) return undefined;
+        node = node.next;
+        current++;
+    }
+    return node.data;
 
 }
 
@@ -77,6 +86,7 @@ List.prototype.toString = function() {
     }
     return string;
 }
+
 
 //just a little helper to build a randomized list to work with
 List.prototype.quickBuild = function(length) {
