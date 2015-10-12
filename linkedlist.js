@@ -52,10 +52,25 @@ List.prototype.getNth = function(index) {
 }
 
 List.prototype.indexOf = function(data) {
+    let index = 0, node = this.head;
 
+    while (node) {
+        if (node.data === data) return index;
+        node = node.next;
+        index++;
+    }
+    return -1;
 }
 
 List.prototype.lastIndexOf = function(data) {
+    let current = 0, result = -1, node = this.head;
+
+    while (node) {
+        if (node.data === data) result = current;
+        node = node.next;
+        current++;
+    }
+    return result;
 
 }
 
