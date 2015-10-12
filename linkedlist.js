@@ -15,13 +15,13 @@ function List() {
     }
 }
 
-List.prototype.prepend = function(data) {
+List.prototype.prepend = function(data) {         
     let node = new Node(data);
     node.next = this.head;
     this.head = node;
 }
 
-List.prototype.append = function(data) {
+List.prototype.append = function(data) {          
     if (this.head === null) {
         this.head = new Node(data);
         return;
@@ -35,7 +35,7 @@ List.prototype.append = function(data) {
 }
 
 List.prototype.insert = function(index, data) {
-
+ 
 }
 
 List.prototype.getNth = function(index) {
