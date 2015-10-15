@@ -27,25 +27,33 @@ Set.prototype.remove = function(...args) {
 
 
 Set.prototype.union = function(other) {
-    let set3 = new Set;
-    set3.set = this.set.concat();
+    let resultSet = new Set;
+    resultSet.set = this.set.concat();
     other.set.forEach(function(value) {
-        set3.add(value);
+        resultSet.add(value);
     });
-    return set3;
+    return resultSet;
 }
 
 Set.prototype.intersection = function(other) {  
-    let set3 = new Set;
+    let resultSet = new Set;
     this.set.forEach(function(value) {
         if (other.set.indexOf(value) > -1) {
-            set3.add(value);
+            resultSet.add(value);
         }
-    }, this);
-    return set3;
+    });
+    return resultSet;
 }
 
-//complement = function(other) {
+Set.prototype.subtract = function(other) {
+    let resultSet = new Set;
+    this.set.forEach(function(value) {
+        if (other.set.indexOf(value) === -1) {
+            resultSet.add(value);
+        }
+    });
+    return resultSet;
+}
 
 
 //product = function(other) {
