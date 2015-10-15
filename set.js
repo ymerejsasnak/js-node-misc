@@ -35,8 +35,14 @@ Set.prototype.union = function(other) {
     return set3;
 }
 
-Set.prototype.intersection = function(other) {
-
+Set.prototype.intersection = function(other) {  
+    let set3 = new Set;
+    this.set.forEach(function(value) {
+        if (other.set.indexOf(value) > -1) {
+            set3.add(value);
+        }
+    }, this);
+    return set3;
 }
 
 //complement = function(other) {
