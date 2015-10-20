@@ -17,8 +17,6 @@ Queue.prototype.enqueue = function() {
 
 
 Queue.prototype.dequeue = function() {
-    if (this.queue === []) return undefined;
-
     return this.queue.shift();
 } 
 
@@ -27,4 +25,44 @@ Queue.prototype.dequeue = function() {
 
 
 
-module.exports = Queue;
+function Deque() {
+    this.deque = [];
+}
+
+Deque.prototype.addFront = function(value) {
+    this.deque.unshift(value);
+}
+
+Deque.prototype.addBack = function(value) {
+    this.deque.push(value);
+}
+
+Deque.prototype.removeFront = function() {
+    return this.deque.shift();
+}
+
+Deque.prototype.removeBack = function() {
+    return this.deque.pop();
+}
+
+Deque.prototype.length = function() {
+    return this.deque.length;
+}
+
+Deque.prototype.front = function() {
+    return this.deque[0];
+}
+
+Deque.prototype.back = function() {
+    return this.deque[this.length() - 1];
+}
+
+
+
+
+
+
+
+
+
+module.exports = {Queue, Deque};
