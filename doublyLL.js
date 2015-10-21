@@ -11,6 +11,7 @@ function DoublyLinkedList() {
     this.tail = new Node(null);
     this.head.next = this.tail;
     this.tail.previous = this.head;
+
 }
 
 DoublyLinkedList.prototype.append = function(data) {
