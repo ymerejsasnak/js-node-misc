@@ -7,8 +7,8 @@ function Node(data) {
     this.right = null;
 }
 
-Node.prototype.show = function(node) {
-    return this.data;
+Node.prototype.show = function() {
+    process.stdout.write(this.data.toString() + ' ');
 }
 
 
@@ -46,13 +46,40 @@ BST.prototype.insert = function(data) {
 }
 
 BST.prototype.inOrder = function(node) {
+    if (typeof node === 'undefined') node = this.root;
     if (node !== null) {
         this.inOrder(node.left);
-        console.log(node.show() + ' ');
+        node.show();
         this.inOrder(node.right);
     }
 }
 
+BST.prototype.preOrder = function(node) {
+    if (typeof node === 'undefined') node = this.root;
+    if (node !== null) {
+        node.show();
+        this.preOrder(node.left);
+        this.preOrder(node.right);
+    }
+}
+
+BST.prototype.postOrder = function(node) {
+    if (typeof node === 'undefined') node = this.root;
+    if (node !== null) {
+        this.postOrder(node.left);
+        this.postOrder(node.right);
+        node.show();
+    }
+}
+
+
+
+
+BST.prototype.makeRandom = function(size) {
+    for (let i = 0; i < size; i++) {
+        this.insert(Math.floor(Math.random() * 1000));
+    }
+}
 
 
 
