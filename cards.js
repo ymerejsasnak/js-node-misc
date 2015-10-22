@@ -12,13 +12,12 @@ function Deck() {
     const values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
     const suits = ['clubs', 'diamonds', 'hearts', 'spades'];
     this.deck = [];
-    let self = this;
-
+    
     suits.forEach(function(suit) {
         values.forEach(function(value) {
-            self.deck.push(new Card(value, suit));
-        });
-    });
+            this.deck.push(new Card(value, suit));
+        }, this);
+    }, this);
 }
 
 Deck.prototype.showAll = function() {
@@ -53,10 +52,16 @@ Deck.prototype.drawFromMiddle = function() {
     // allow about half the deck to be considered the middle
     let middle = Math.floor(Math.random() * this.deck.length / 2 + this.deck.length / 4)
     return this.deck.splice(middle, 1)[0];
-
 }
 
-//cut deck, discard x cards, deal hands, other ideas?
+Deck.prototype.cut = function() {
+    // cut splits deck somewhere in middle third
+    let cut = Math.floor(Math.random() * this.deck.length / 3 + this.deck.length / 3)
+    let top = this.deck.slice(0, cut);
+    let bottom = this.deck.slice(cut);
+    this.deck = bottom.concat(top);
+}
+
 
 
 
